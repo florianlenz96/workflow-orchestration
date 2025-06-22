@@ -1,8 +1,8 @@
-using HttpMultipartParser;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.DurableTask.Client;
 using Microsoft.Extensions.Logging;
+using System.Text.Json;
 
 namespace InsuranceProcessor.AnalyzingProcess;
 
@@ -17,19 +17,25 @@ public class ProcessStart
     {
         var logger = executionContext.GetLogger("ProcessStart");
         
-        var parser = await MultipartFormDataParser.ParseAsync(req.Body);
-        var description = parser.GetParameterValue("description");
-        var imageFile = parser.Files.FirstOrDefault(f => f.Name == "image");
-        var ms = new MemoryStream();
-        await imageFile.Data.CopyToAsync(ms);
-        var base64Image = Convert.ToBase64String(ms.ToArray());
+        // Read JSON request body
+        using var reader = new StreamReader(req.Body);
+        var requestBody = await reader.ReadToEndAsync();
         
-        var processId = Guid.NewGuid().ToString();
+        // Deserialize JSON to get the parameters
+        var requestData = JsonSerializer.Deserialize<RequestData>(requestBody);
+        
+        if (requestData == null)
+        {
+            var errorResponse = req.CreateResponse(System.Net.HttpStatusCode.BadRequest);
+            await errorResponse.WriteStringAsync("Invalid request data");
+            return errorResponse;
+        }
+        
         var orchestrationInput = new Parameter
         {
-            Name = processId,
-            Description = description,
-            Image = base64Image
+            Name = requestData.Name,
+            Description = requestData.Description,
+            Image = requestData.Image
         };
         
         var instanceId = await client.ScheduleNewOrchestrationInstanceAsync(nameof(Orchestrator), orchestrationInput);
@@ -45,4 +51,12 @@ public class ProcessStart
 
         return response;
     }
+}
+
+// Request data model to match the frontend JSON structure
+public class RequestData
+{
+    public string Name { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
+    public string Image { get; set; } = string.Empty;
 }

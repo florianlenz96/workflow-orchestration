@@ -1,6 +1,6 @@
 // Configuration - Update this URL to your Azure Function endpoint
 const API_ENDPOINT =
-  "https://dwx-insurance-workflow.azurewebsites.net/api/ProcessStart?code=VTBSyd-BiDMHgV8JlSmH76AjUJ39O_u4I32kXwpil4_mAzFu-RY4Gg==";
+  "https://dwx-serverless101.azurewebsites.net/api/ProcessStart?code=V_XdV2lVV0FV7AlHVKTQfVpPBirDC-eJ7cpA0-lS0cYQAzFuy6fjTw==";
 
 // DOM elements
 const claimForm = document.getElementById("claimForm");

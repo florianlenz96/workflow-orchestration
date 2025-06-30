@@ -1,0 +1,228 @@
+{
+	"info": {
+		"_postman_id": "0d3c3942-c1f3-417e-af51-59c9bdf50d8a",
+		"name": "ServerlessWorkflow101",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40864950"
+	},
+	"item": [
+		{
+			"name": "Patterns",
+			"item": [
+				{
+					"name": "Chaining",
+					"item": [
+						{
+							"name": "Start",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://workflow101patterns.azurewebsites.net/api/StartChaining?code=Z951PxSjH9grtZwwl85s22-8VWC9Kvpn1rfDGNmT06YHAzFupB6d_w==",
+									"protocol": "https",
+									"host": [
+										"workflow101patterns",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"StartChaining"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "Z951PxSjH9grtZwwl85s22-8VWC9Kvpn1rfDGNmT06YHAzFupB6d_w=="
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "FanOut-FanIn",
+					"item": [
+						{
+							"name": "Start",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://workflow101patterns.azurewebsites.net/api/StartFanOutFanIn?code=Z951PxSjH9grtZwwl85s22-8VWC9Kvpn1rfDGNmT06YHAzFupB6d_w==",
+									"protocol": "https",
+									"host": [
+										"workflow101patterns",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"StartFanOutFanIn"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "Z951PxSjH9grtZwwl85s22-8VWC9Kvpn1rfDGNmT06YHAzFupB6d_w=="
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Human Interaction",
+					"item": [
+						{
+							"name": "Start",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://workflow101patterns.azurewebsites.net/api/StartHumanInteraction?code=Z951PxSjH9grtZwwl85s22-8VWC9Kvpn1rfDGNmT06YHAzFupB6d_w==",
+									"protocol": "https",
+									"host": [
+										"workflow101patterns",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"StartHumanInteraction"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "Z951PxSjH9grtZwwl85s22-8VWC9Kvpn1rfDGNmT06YHAzFupB6d_w=="
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SendEvent",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "true",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://workflow101patterns.azurewebsites.net/runtime/webhooks/durabletask/instances/51038fd41ae742c4996d42e30e8ac638/raiseEvent/HumanInteractionEvent?code=308k2GJ5UGHzqHDk2NqUhAVfdDwiI7WCd_Tsj_hlAr6sAzFuHCWzdw==",
+									"protocol": "https",
+									"host": [
+										"workflow101patterns",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"runtime",
+										"webhooks",
+										"durabletask",
+										"instances",
+										"51038fd41ae742c4996d42e30e8ac638",
+										"raiseEvent",
+										"HumanInteractionEvent"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "308k2GJ5UGHzqHDk2NqUhAVfdDwiI7WCd_Tsj_hlAr6sAzFuHCWzdw=="
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Async Http",
+					"item": [
+						{
+							"name": "Start",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://workflow101patterns.azurewebsites.net/api/StartAsyncHttp?code=Z951PxSjH9grtZwwl85s22-8VWC9Kvpn1rfDGNmT06YHAzFupB6d_w==",
+									"protocol": "https",
+									"host": [
+										"workflow101patterns",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"StartAsyncHttp"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "Z951PxSjH9grtZwwl85s22-8VWC9Kvpn1rfDGNmT06YHAzFupB6d_w=="
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "RaiseEvent",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "false",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://workflow101patterns.azurewebsites.net/runtime/webhooks/durabletask/instances/3d41e0e1ca41479da415e079ef9adf5f/raiseEvent/HumanInteractionEvent?code=308k2GJ5UGHzqHDk2NqUhAVfdDwiI7WCd_Tsj_hlAr6sAzFuHCWzdw==",
+									"protocol": "https",
+									"host": [
+										"workflow101patterns",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"runtime",
+										"webhooks",
+										"durabletask",
+										"instances",
+										"3d41e0e1ca41479da415e079ef9adf5f",
+										"raiseEvent",
+										"HumanInteractionEvent"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "308k2GJ5UGHzqHDk2NqUhAVfdDwiI7WCd_Tsj_hlAr6sAzFuHCWzdw=="
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
